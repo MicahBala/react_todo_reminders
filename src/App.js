@@ -11,6 +11,7 @@ class App extends Component {
 
     this.state = {
       tasks: TASKS,
+      showAddTask: false,
     };
   }
 
@@ -46,8 +47,10 @@ class App extends Component {
 
     return (
       <div className="container">
-        <Header />
-        <AddTask onAdd={addTask} />
+        <Header
+          onAdd={() => this.setState({ showAddTask: !this.state.showAddTask })}
+        />
+        {this.state.showAddTask && <AddTask onAdd={addTask} />}
         {this.state.tasks.length > 0 ? (
           <Tasks
             tasks={this.state.tasks}
