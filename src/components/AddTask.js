@@ -7,27 +7,21 @@ class AddTask extends Component {
     this.state = {
       text: "",
       day: "",
-      reminder: "",
+      reminder: false,
     };
   }
-
   render() {
-    // console.log(this.props.onAdd());
-
     const onSubmit = (e) => {
       e.preventDefault();
 
-      // Check if you are submiting without a task
       if (!this.state.text) {
-        alert("Please add a task");
+        alert("Please add a task!");
         return;
       }
 
-      //   Pass the task as an object to the onAdd function
       const { text, day, reminder } = this.state;
       this.props.onAdd({ text, day, reminder });
 
-      //   After submiting, empty the current state
       this.setState({
         text: "",
         day: "",
@@ -41,13 +35,11 @@ class AddTask extends Component {
           <label>Task</label>
           <input
             type="text"
-            placeholder="Add Task"
+            placeholder="Add task"
             value={this.state.text}
-            onChange={(e) =>
-              this.setState({
-                text: e.target.value,
-              })
-            }
+            onChange={(e) => {
+              this.setState({ text: e.target.value });
+            }}
           />
         </div>
 
@@ -55,13 +47,11 @@ class AddTask extends Component {
           <label>Day & Time</label>
           <input
             type="text"
-            placeholder="Add Day & Time"
+            placeholder="Add day & time"
             value={this.state.day}
-            onChange={(e) =>
-              this.setState({
-                day: e.target.value,
-              })
-            }
+            onChange={(e) => {
+              this.setState({ day: e.target.value });
+            }}
           />
         </div>
 
@@ -71,11 +61,9 @@ class AddTask extends Component {
             type="checkbox"
             checked={this.state.reminder}
             value={this.state.reminder}
-            onChange={(e) =>
-              this.setState({
-                reminder: e.currentTarget.checked,
-              })
-            }
+            onChange={(e) => {
+              this.setState({ reminder: e.currentTarget.checked });
+            }}
           />
         </div>
 

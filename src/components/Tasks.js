@@ -1,9 +1,19 @@
 import Task from "./Task";
 
 const Tasks = ({ tasks, onDelete, onToggle }) => {
-  return tasks.map((task) => (
-    <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
-  ));
+  return (
+    <>
+      {tasks.map((task) => {
+        return (
+          <Task
+            key={task.id}
+            task={task}
+            onDelete={() => onDelete(task.id)}
+            onToggle={onToggle}
+          />
+        );
+      })}
+    </>
+  );
 };
-
 export default Tasks;
