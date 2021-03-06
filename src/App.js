@@ -14,6 +14,26 @@ class App extends Component {
     };
   }
 
+  // Fetch data
+  fetchTasks = async () => {
+    const res = await fetch("http://localhost:5000/tasks");
+    const data = await res.json();
+    return data;
+  };
+
+  componentDidMount() {
+    const getTasks = async () => {
+      const tasksFromSever = await this.fetchTasks();
+
+      // Set the state with data from server
+      this.setState({
+        tasks: tasksFromSever,
+      });
+    };
+
+    getTasks();
+  }
+
   render() {
     // Add Task
     const addTask = (task) => {
