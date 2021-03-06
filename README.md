@@ -1,18 +1,16 @@
-# Getting Started with Create React App
+# Todo Reminders App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). With a guide from Brad Traversy's Crash course on React 2021.
 
-## Available Scripts
+## Using the App
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Clone the project directory and run `yarn add` to install all dependencies
+- Open a terminal and run `yarn start` to Runs the app in the development mode.\
+  Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- The page will reload if you make edits.\
+  You will also see any lint errors in the console.
+- Open another terminal and run `yarn server` to run the locally installed json server (to mock the backend);
+- You can now add and delete tasks from the user interface provided.
 
 ### `yarn build`
 
