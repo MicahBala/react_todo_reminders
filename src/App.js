@@ -36,19 +36,28 @@ class App extends Component {
 
   render() {
     // Add Task
-    const addTask = (task) => {
-      // console.log(task);
-      const id = Math.floor(Math.random() * 1000) + 1;
-      const newTask = { id, ...task };
+    const addTask = async (task) => {
+      const res = await fetch(`http://localhost:5000/tasks`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(task),
+      });
+
+      const newTask = await res.json();
 
       this.setState({
-        tasks: [...tasks, newTask],
+        tasks: [...this.state.tasks, newTask],
       });
     };
 
     // Delete a task
-    const deleteTask = (id) => {
-      // console.log("delete task ", id);
+    const deleteTask = async (id) => {
+      await fetch(`http://localhost:5000/tasks/${id}`, {
+        method: "DELETE",
+      });
+
       this.setState({
         tasks: this.state.tasks.filter((task) => task.id !== id),
       });
